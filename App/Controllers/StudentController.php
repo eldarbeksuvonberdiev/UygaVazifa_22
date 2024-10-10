@@ -5,24 +5,28 @@ namespace App\Controllers;
 use App\Models\Fanlar;
 use App\Models\Student;
 
-class CategoryController
+class StudentController
 {
 
-    public function index()
+    public function student()
     {
-        $models = Fanlar::all();
-        return view('index', 'Home', $models);
+        $models = Student::all();
+        return view('student', 'Students', $models);
     }
-
     
     public function create()
     {
         if (isset($_POST['ok'])) {
             $data = [
-                'name' => $_POST['name']
-            ];
+                'name' => $_POST['name'],
+                'password' => $_POST['password'],
+                'tel' => $_POST['tel'],
+                'manzil' => $_POST['manzil'],
+                'img' => $_FILES['img']['name']
+             ];
+            //  dd($data);
             Fanlar::create($data);
-            header("location: /");
+            header("location: /student");
         }
     }
 
@@ -34,7 +38,7 @@ class CategoryController
             header("location: /");
         }
     }
-    
+
     public function show()
     {
         if (isset($_POST['ok'])) {
@@ -43,7 +47,7 @@ class CategoryController
             return view('show', 'Show', $models);
         }
     }
-    
+
     public function edit()
     {
         if (isset($_POST['ok'])) {
@@ -52,7 +56,7 @@ class CategoryController
             return view('edit', 'Show', $models);
         }
     }
-    
+
     public function update()
     {
         if (isset($_POST['ok'])) {
@@ -64,6 +68,4 @@ class CategoryController
             header("location: /");
         }
     }
-
-
 }
