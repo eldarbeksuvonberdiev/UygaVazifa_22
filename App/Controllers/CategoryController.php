@@ -1,26 +1,28 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\Fanlar;
 use App\Models\Student;
 
-class CategoryController{
+class CategoryController
+{
 
-    public function index(){
+    public function index()
+    {
         $models = Fanlar::all();
-        return view('index','Home',$models);
+        return view('index', 'Home', $models);
     }
 
-    public function about(){
+    public function student()
+    {
         $models = Student::all();
-        return view('about','About',$models);
+        return view('student', 'Students', $models);
     }
 
-    public function contact(){
-        return view('contact','Contacts');
-    }
-
-    public function create(){
-        if(isset($_POST['ok'])){
+    public function create()
+    {
+        if (isset($_POST['ok'])) {
             $data = [
                 'name' => $_POST['name']
             ];
@@ -29,37 +31,41 @@ class CategoryController{
         }
     }
 
-    public function delete(){
-        if(isset($_POST['ok'])){
+    public function delete()
+    {
+        if (isset($_POST['ok'])) {
             $id = $_POST['id'];
             Fanlar::delete($id);
             header("location: /");
         }
     }
 
-    public function show(){
-        if(isset($_POST['ok'])){
+    public function show()
+    {
+        if (isset($_POST['ok'])) {
             $id = $_POST['id'];
             $models = Fanlar::show($id);
-            return view('show','Show',$models);
+            return view('show', 'Show', $models);
         }
     }
 
-    public function edit(){
-        if(isset($_POST['ok'])){
+    public function edit()
+    {
+        if (isset($_POST['ok'])) {
             $id = $_POST['id'];
             $models = Fanlar::show($id);
-            return view('edit','Show',$models);
+            return view('edit', 'Show', $models);
         }
     }
 
-    public function update(){
-        if(isset($_POST['ok'])){
+    public function update()
+    {
+        if (isset($_POST['ok'])) {
             $id = $_POST['id'];
             $data = [
                 'name' => $_POST['name']
             ];
-            $models = Fanlar::update($data,$id);
+            $models = Fanlar::update($data, $id);
             header("location: /");
         }
     }
