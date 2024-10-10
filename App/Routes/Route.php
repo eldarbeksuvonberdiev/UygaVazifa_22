@@ -27,7 +27,7 @@ class Route{
         $action = self::$routes[$method][$path] ?? false;
         
         if($action == false){
-            echo "404 not found: ". $path;
+            header('location: /notfound404');
         }
 
         if(is_array($action)){

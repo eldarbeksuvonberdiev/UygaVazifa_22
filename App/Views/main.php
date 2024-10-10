@@ -7,7 +7,7 @@
     <title><?= $action ?></title>
 </head>
 
-<body>
+<body style="background-color: grey;">
     <ul>
         <li><a href="/">Fanlar</a></li>
         <li><a href="/student">Talabalar</a></li>

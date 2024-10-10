@@ -1,9 +1,10 @@
-<h1>CategoryController Index controller</h1>
+<h1>Fanlar</h1>
+<h3>Yangi fan qo'shish</h3>
 <form action="/create" method="post">
     <input type="text" name="name" placeholder="Name">
     <input type="submit" name="ok" value="Save">
 </form><br>
-<table width="80%" align="center" border="2">
+<table width="80%" align="center" border="2" style="background-color: antiquewhite;">
     <tr>
         <th>ID</th>
         <th>Name</th>

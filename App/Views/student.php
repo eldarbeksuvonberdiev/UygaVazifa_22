@@ -2,7 +2,7 @@
 <form action="/tocreate" method="post">
     <input type="submit" name="ok" value="Create New">
 </form><br>
-<table width="80%" align="center" border="2">
+<table width="80%" align="center" border="2" style="background-color: antiquewhite;">
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -18,9 +18,9 @@
         <tr>
             <td><?= $model->id ?></td>
             <td><?= $model->name ?></td>
-            <td><?= $model->tel ?></td>
+            <td><?= $model->tel ?></td>  
             <td><?= $model->manzil ?></td>
-            <td><?= $model->img ?></td>
+            <td><img src="<?= $model->img ?>" alt="" width="100px"></td>
             <td>
                 <form action="/sshow" method="post">
                     <input type="hidden" name="id" value="<?= $model->id ?>">

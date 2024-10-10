@@ -17,16 +17,28 @@ class StudentController
     {
         return view('createStudent', 'Students');
     }
-    
+
     public function create()
     {
         if (isset($_POST['ok'])) {
+            $img = explode('.',$_FILES['img']['name']);
+            $timg = ['jpg','png','svg'];
+            $end = end($img);
+            if(in_array($end,$timg)){
+                $path = 'Images/'. date("Y-m-d_H-i-s.") . $end;
+                echo $path;
+            }else{
+                header("location: /tocreate");
+            }
+
+            move_uploaded_file($_FILES['img']['tmp_name'],$path);
+            
             $data = [
                 'name' => htmlspecialchars(strip_tags($_POST['name'])),
                 'password' => htmlspecialchars(strip_tags($_POST['password'])),
                 'tel' => htmlspecialchars(strip_tags($_POST['tel'])),
                 'manzil' => htmlspecialchars(strip_tags($_POST['manzil'])),
-                'img' => $_FILES['img']['name']
+                'img' => $path
             ];
             //  dd($data);
             Student::create($data);
@@ -48,7 +60,7 @@ class StudentController
         if (isset($_POST['ok'])) {
             $id = $_POST['id'];
             $models = Student::show($id);
-            return view('show', 'Show', $models);
+            return view('showStudent', 'Show Student info', $models);
         }
     }
 
@@ -65,11 +77,36 @@ class StudentController
     {
         if (isset($_POST['ok'])) {
             $id = $_POST['id'];
+            if($_FILES['img']['name']){
+                $img = explode('.',$_FILES['img']['name']);
+                $timg = ['jpg','png','svg'];
+                $end = end($img);
+                if(in_array($end,$timg)){
+                    $path = 'Images/'. date("Y-m-d_H-i-s.") . $end;
+                }else{
+                    header("location: /sedit");
+                }
+            }else{
+                $path = $_POST['rasm'];
+            }            
             $data = [
-                'name' => $_POST['name']
+                'name' => $_POST['name'],
+                'password' => $_POST['password'],
+                'tel' => $_POST['tel'],
+                'manzil' => $_POST['manzil'],
+                'img' => $path
             ];
             $models = Student::update($data, $id);
             header("location: /student");
+        }
+    }
+
+    public function editStudent()
+    {
+        if(isset($_POST['ok'])){
+            $id = $_POST['id'];
+            $models = Student::show($id);
+            return view('editStudent', 'Edit Students', $models);
         }
     }
 }

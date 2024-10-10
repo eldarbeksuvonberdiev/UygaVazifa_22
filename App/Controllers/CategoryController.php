@@ -12,6 +12,10 @@ class CategoryController
         $models = Fanlar::all();
         return view('index', 'Home', $models);
     }
+    public function notfound()
+    {
+        return view('notfound', '404 not found');
+    }
 
     
     public function create()
