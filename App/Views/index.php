@@ -1,4 +1,8 @@
 <h1>CategoryController Index controller</h1>
+<form action="/create" method="post">
+    <input type="text" name="name" placeholder="Name">
+    <input type="submit" name="ok" value="Save">
+</form><br>
 <table width="80%" align="center" border="2">
     <tr>
         <th>ID</th>
@@ -13,13 +17,22 @@
             <td><?=$model->id?></td>
             <td><?=$model->name?></td>
             <td>
-                <a href="/show"><button>Show</button></a>
+            <form action="/show" method="post">
+                    <input type="hidden" name="id" value="<?=$model->id?>">
+                    <input type="submit" name="ok" value="SHOW">
+                </form>
             </td>
             <td>
-            <a href="/edit"><button>Edit</button></a>
+            <form action="/edit" method="post">
+                    <input type="hidden" name="id" value="<?=$model->id?>">
+                    <input type="submit" name="ok" value="EDIT">
+            </form>
             </td>
             <td>
-            <a href="/delete"><button>Delete</button></a>
+                <form action="/delete" method="post">
+                    <input type="hidden" name="id" value="<?=$model->id?>">
+                    <input type="submit" name="ok" value="DELETE">
+                </form>
             </td>
         </tr>
     <?php }

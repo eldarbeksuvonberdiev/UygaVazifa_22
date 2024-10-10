@@ -18,7 +18,7 @@ class Model extends Database
     public static function show($id)
     {
         if(gettype((int)$id) == "integer"){
-            $sql = "SELECT * FROM " . self::$table . " WHERE id = :id";
+            $sql = "SELECT * FROM " . static::$table . " WHERE id = :id";
             $query = self::connect()->prepare($sql);
             $query->bindParam(":id",$id);
             $query->execute();
@@ -31,7 +31,7 @@ class Model extends Database
     {
         $columns = implode(", ", array_keys($data));
         $values = "'" . implode("','", array_values($data))."'";
-        $sql = "INSERT INTO " . self::$table . " ({$columns}) VALUES ({$values})";
+        $sql = "INSERT INTO " . static::$table . " ({$columns}) VALUES ({$values})";
         $result = self::connect()->prepare($sql)->execute();
         if($result){
             return true;
@@ -41,7 +41,7 @@ class Model extends Database
 
     public static function delete($id)
     {
-        $sql = "DELETE FROM ".self::$table ." WHERE id = :id";
+        $sql = "DELETE FROM ".static::$table ." WHERE id = :id";
         $result = self::connect()->prepare($sql);
         $result->bindParam(":id",$id);
         if($result->execute()){
@@ -59,7 +59,7 @@ class Model extends Database
         }
         $setValue = rtrim($setValue,",");
 
-        $query = "UPDATE " . self::$table . " SET {$setValue} WHERE id = {$id}";
+        $query = "UPDATE " . static::$table . " SET {$setValue} WHERE id = {$id}";
         $stmt = self::connect()->prepare($query);
         
         return $stmt->execute();
