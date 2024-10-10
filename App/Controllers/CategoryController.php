@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\Fanlar;
-use App\Models\Student;
 
 class CategoryController
 {

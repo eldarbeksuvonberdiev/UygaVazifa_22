@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\Fanlar;
 use App\Models\Student;
 
 class StudentController
@@ -14,6 +13,11 @@ class StudentController
         return view('student', 'Students', $models);
     }
 
+    public function createStudent()
+    {
+        return view('createStudent', 'Students');
+    }
+    
     public function create()
     {
         if (isset($_POST['ok'])) {
@@ -35,7 +39,7 @@ class StudentController
         if (isset($_POST['ok'])) {
             $id = $_POST['id'];
             Student::delete($id);
-            header("location: /");
+            header("location: /student");
         }
     }
 
@@ -65,7 +69,7 @@ class StudentController
                 'name' => $_POST['name']
             ];
             $models = Student::update($data, $id);
-            header("location: /");
+            header("location: /student");
         }
     }
 }
