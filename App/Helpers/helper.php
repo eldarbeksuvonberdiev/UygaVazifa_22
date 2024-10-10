@@ -6,7 +6,7 @@ if(!function_exists('dd')){
         echo "<body bgcolor='grey'>";
         echo "<pre style='background-color:black;color:#0dbb2a;font-family:monospace'>";
         print_r($data);
-        echo '/pre';
+        echo '</pre>';
         exit;
     }
 }

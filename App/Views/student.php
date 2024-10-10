@@ -1,11 +1,11 @@
 <h1>CategoryController about controller</h1>
 <form action="/screate" method="post" enctype="multipart/form-data">
     <h3>Talaba Create</h3>
-    <input type="text" name="name" placeholder="Name"><br><br>
-    <input type="password" name="password" placeholder="Password"><br><br>
-    <input type="number" name="tel" placeholder="Telefon raqami"><br><br>
-    <input type="text" name="manzil" placeholder="Manzil"><br><br>
-    <input type="file" name="img"><br><br>
+    <input type="text" name="name" placeholder="Name" required><br><br>
+    <input type="password" name="password" placeholder="Password" required><br><br>
+    <input type="number" name="tel" placeholder="Telefon raqami" required><br><br>
+    <input type="text" name="manzil" placeholder="Manzil" required><br><br>
+    <input type="file" name="img" required><br><br>
     <input type="submit" name="ok" value="Save"><br>
 </form><br>
 <table width="80%" align="center" border="2">

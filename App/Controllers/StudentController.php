@@ -13,19 +13,19 @@ class StudentController
         $models = Student::all();
         return view('student', 'Students', $models);
     }
-    
+
     public function create()
     {
         if (isset($_POST['ok'])) {
             $data = [
-                'name' => $_POST['name'],
-                'password' => $_POST['password'],
-                'tel' => $_POST['tel'],
-                'manzil' => $_POST['manzil'],
+                'name' => htmlspecialchars(strip_tags($_POST['name'])),
+                'password' => htmlspecialchars(strip_tags($_POST['password'])),
+                'tel' => htmlspecialchars(strip_tags($_POST['tel'])),
+                'manzil' => htmlspecialchars(strip_tags($_POST['manzil'])),
                 'img' => $_FILES['img']['name']
-             ];
+            ];
             //  dd($data);
-            Fanlar::create($data);
+            Student::create($data);
             header("location: /student");
         }
     }
@@ -34,7 +34,7 @@ class StudentController
     {
         if (isset($_POST['ok'])) {
             $id = $_POST['id'];
-            Fanlar::delete($id);
+            Student::delete($id);
             header("location: /");
         }
     }
@@ -43,7 +43,7 @@ class StudentController
     {
         if (isset($_POST['ok'])) {
             $id = $_POST['id'];
-            $models = Fanlar::show($id);
+            $models = Student::show($id);
             return view('show', 'Show', $models);
         }
     }
@@ -52,7 +52,7 @@ class StudentController
     {
         if (isset($_POST['ok'])) {
             $id = $_POST['id'];
-            $models = Fanlar::show($id);
+            $models = Student::show($id);
             return view('edit', 'Show', $models);
         }
     }
@@ -64,7 +64,7 @@ class StudentController
             $data = [
                 'name' => $_POST['name']
             ];
-            $models = Fanlar::update($data, $id);
+            $models = Student::update($data, $id);
             header("location: /");
         }
     }
