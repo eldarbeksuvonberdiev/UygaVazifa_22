@@ -1,5 +1,5 @@
 <h1>CategoryController Index controller</h1>
-<table>
+<table width="80%" align="center" border="2">
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -10,11 +10,17 @@
     <?php
     foreach ($models as $model) { ?>
         <tr>
-            <td>Soe</td>
-            <td>Soe</td>
-            <td>Soe</td>
-            <td>Soe</td>
-            <td>Soe</td>
+            <td><?=$model->id?></td>
+            <td><?=$model->name?></td>
+            <td>
+                <a href="/show"><button>Show</button></a>
+            </td>
+            <td>
+            <a href="/edit"><button>Edit</button></a>
+            </td>
+            <td>
+            <a href="/delete"><button>Delete</button></a>
+            </td>
         </tr>
     <?php }
     ?>

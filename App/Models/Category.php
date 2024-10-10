@@ -3,7 +3,7 @@ namespace App\Models;
 
 class Category extends Model
 {
-    public static $table = 'talabalar';
+    public static $table = 'talaba';
 }
 
 

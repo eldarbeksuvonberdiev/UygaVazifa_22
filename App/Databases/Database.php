@@ -1,11 +1,11 @@
 <?php
-namespace App\Database;
+namespace App\Databases;
 use PDO;
 
 class Database
 {
     protected static $host = "localhost";
-    protected static $dbname = "oopda";
+    protected static $dbname = "imtihon";
     protected static $user = "root";
     protected static $password = "root";
 
