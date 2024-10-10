@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class Category extends Model
+class Student extends Model
 {
     public static $table = 'talaba';
 }

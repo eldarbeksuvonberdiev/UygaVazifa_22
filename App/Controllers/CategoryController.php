@@ -1,15 +1,17 @@
 <?php
 namespace App\Controllers;
-use App\Models\Category;
+use App\Models\Fanlar;
+use App\Models\Student;
 
 class CategoryController{
 
     public function index(){
-        $models = Category::all();
+        $models = Fanlar::all();
         return view('index','Home',$models);
     }
     public function about(){
-        return view('about','About');
+        $models = Student::all();
+        return view('about','About',$models);
     }
     public function contact(){
         return view('contact','Contacts');

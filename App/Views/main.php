@@ -9,8 +9,8 @@
 
 <body>
     <ul>
-        <li><a href="/">Bosh sahifa</a></li>
-        <li><a href="/about">About sahifa</a></li>
+        <li><a href="/">Fanlar</a></li>
+        <li><a href="/about">Talabalar</a></li>
         <li><a href="/contact">Contacts sahifa</a></li>
     </ul>
     <?=$content?>
